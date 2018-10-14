@@ -35,6 +35,11 @@ func main() {
 			Usage:  "Kubernetes helm chart name",
 			EnvVar: "PLUGIN_OUTPUT_FILE,OUTPUT_FILE",
 		},
+		cli.StringFlag{
+			Name:   "branch",
+			Usage:  "Current branch",
+			EnvVar: "DRONE_COMMIT_BRANCH",
+		},
 	}
 	if err := app.Run(os.Args); err != nil {
 		logrus.Fatal(err)
@@ -51,6 +56,7 @@ func run(c *cli.Context) error {
 			GitEmail:   c.String("git_email"),
 			InputFile:  c.String("input_file"),
 			OutputFile: c.String("output_file"),
+			Branch:     c.String("branch"),
 		},
 	}
 	return plugin.Exec()
