@@ -16,11 +16,12 @@ DroneCi plugin to read version from a file, write to the output file and push th
 The drone-git-version plugin, reads comma separated versions from a input and writes the latest of these versions to an output file.
 The output file is the pushed back to the cuirrent repository.
 
-| Parameter name | Description | Optional |
-| git_name | git config.name | |
-| git_email | git config.email | |
-| input_file | Path to the versions input file. Versions file musst be comma separated versions | |
-| output_file | Path to the version output file that is pushed back to the repo. | |
+| Parameter name | Description                                                                      | Optional |
+| -------------- | :------------------------------------------------------------------------------- | :------: |
+| git_name       | git config.name                                                                  |          |
+| git_email      | git config.email                                                                 |          |
+| input_file     | Path to the versions input file. Versions file musst be comma separated versions |          |
+| output_file    | Path to the version output file that is pushed back to the repo.                 |          |
 
 ## Example
 
