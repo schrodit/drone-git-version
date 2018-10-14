@@ -43,7 +43,7 @@ pipeline:
     image: schrodit/drone-git-version
     git_name: DroneCI
     git_email: DroneCI@convey.cf
-    input_file: .image-tags
+    input_file: .image_tags
     output_file: VERSION
     when:
         event: [tag]

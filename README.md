@@ -30,6 +30,6 @@ version:
     image: schrodit/drone-git-version
     git_name: testuser
     git_email: test@example.com
-    input_file: .image-tags
+    input_file: .image_tags
     output_file: VERSION
 ```
