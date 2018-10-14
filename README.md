@@ -10,3 +10,16 @@ DroneCi plugin to read version from a file, write to the output file and push th
 - `echo $VERSION > VERSION`
 - `git commit VERSION -m "[CI SKIP] ci upgrade to version $VERSION"`
 - `git push --set-upstream origin HEAD:$DRONE_COMMIT_BRANCH`
+
+## Documentation
+
+## Example
+
+```YAML
+publish:
+    image: schrodit/drone-git-version
+    git_name: testuser
+    git_email: test@example.com
+    input_file: .image-tags
+    output_file: VERSION
+```
