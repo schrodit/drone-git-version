@@ -27,9 +27,9 @@ pipeline:
       - ls
 
   publish:
-    image: schrodit/drone-git-version
+    image: schrodit/drone-docker-deploy
     pull: true
-    repo: schrodit/drone-helm
+    repo: schrodit/drone-git-version
     secrets: [ docker_username, docker_password ]
     usegittag: true
     latest: true
@@ -38,3 +38,13 @@ pipeline:
     when:
       event: [tag]
       branch: master
+  
+  version:
+    image: schrodit/drone-git-version
+    git_name: DroneCI
+    git_email: DroneCI@convey.cf
+    input_file: .image-tags
+    output_file: VERSION
+    when:
+        event: [tag]
+        branch: master
