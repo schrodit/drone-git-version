@@ -40,6 +40,11 @@ func main() {
 			Usage:  "Current branch",
 			EnvVar: "DRONE_COMMIT_BRANCH",
 		},
+		cli.StringFlag{
+			Name:   "deployment_type",
+			Usage:  "Deployment type",
+			EnvVar: "DRONE_DEPLOY_TO",
+		},
 	}
 	if err := app.Run(os.Args); err != nil {
 		logrus.Fatal(err)
@@ -52,11 +57,12 @@ func run(c *cli.Context) error {
 	}
 	plugin := Plugin{
 		Config: Config{
-			GitName:    c.String("git_name"),
-			GitEmail:   c.String("git_email"),
-			InputFile:  c.String("input_file"),
-			OutputFile: c.String("output_file"),
-			Branch:     c.String("branch"),
+			GitName:        c.String("git_name"),
+			GitEmail:       c.String("git_email"),
+			InputFile:      c.String("input_file"),
+			OutputFile:     c.String("output_file"),
+			Branch:         c.String("branch"),
+			DeploymentType: c.String("deployment_type"),
 		},
 	}
 	return plugin.Exec()

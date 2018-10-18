@@ -8,11 +8,12 @@ import (
 type (
 	// Config maps the params we need to run Helm
 	Config struct {
-		GitName    string `json:"git_name"`
-		GitEmail   string `json:"git_email"`
-		InputFile  string `json:"input_file"`
-		OutputFile string `json:"output_file"`
-		Branch     string `json:"branch"`
+		GitName        string `json:"git_name"`
+		GitEmail       string `json:"git_email"`
+		InputFile      string `json:"input_file"`
+		OutputFile     string `json:"output_file"`
+		Branch         string `json:"branch"`
+		DeploymentType string `json:"deployment_type"`
 	}
 	// Plugin default
 	Plugin struct {
