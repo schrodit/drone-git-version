@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/schrodit/drone-git-version/git"
-	"github.com/schrodit/drone-git-version/version"
+	"github.com/schrodit/drone-git-version/versions"
 )
 
 type (
@@ -10,8 +10,7 @@ type (
 	Config struct {
 		GitName        string `json:"git_name"`
 		GitEmail       string `json:"git_email"`
-		InputFile      string `json:"input_file"`
-		OutputFile     string `json:"output_file"`
+		File           string `json:"file"`
 		Branch         string `json:"branch"`
 		DeploymentType string `json:"deployment_type"`
 	}
@@ -25,9 +24,12 @@ type (
 func (p *Plugin) Exec() error {
 	Git := git.New("./", p.Config.GitName, p.Config.GitEmail)
 
-	version.UpdateVersionFile(p.Config.InputFile, p.Config.OutputFile)
-	Git.Commit(p.Config.OutputFile)
+	newVersion := versions.UpdateVersionFile(p.Config.File, p.Config.DeploymentType)
+	Git.Commit(p.Config.File, newVersion)
 	Git.Push(p.Config.Branch)
+	// TODO: make GitHub release and tag commit
+
+	// TODO: make pull request wesense_landscape to upgrade current submodule repo to tagged release
 
 	return nil
 }

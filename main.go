@@ -26,14 +26,9 @@ func main() {
 			EnvVar: "PLUGIN_GIT_EMAIL,GIT_EMAIL",
 		},
 		cli.StringFlag{
-			Name:   "input_file",
+			Name:   "file",
 			Usage:  "Kubernetes helm release",
-			EnvVar: "PLUGIN_INPUT_FILE,INPUT_FILE",
-		},
-		cli.StringFlag{
-			Name:   "output_file",
-			Usage:  "Kubernetes helm chart name",
-			EnvVar: "PLUGIN_OUTPUT_FILE,OUTPUT_FILE",
+			EnvVar: "PLUGIN_FILE,FILE",
 		},
 		cli.StringFlag{
 			Name:   "branch",
@@ -59,8 +54,7 @@ func run(c *cli.Context) error {
 		Config: Config{
 			GitName:        c.String("git_name"),
 			GitEmail:       c.String("git_email"),
-			InputFile:      c.String("input_file"),
-			OutputFile:     c.String("output_file"),
+			File:           c.String("file"),
 			Branch:         c.String("branch"),
 			DeploymentType: c.String("deployment_type"),
 		},

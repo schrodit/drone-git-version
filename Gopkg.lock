@@ -2,12 +2,9 @@
 
 
 [[projects]]
-  digest = "1:6f0584802aa27c9eba4629e3c8830b66dbc017d3eaf5df3bab2ffb510f6750e3"
+  digest = "1:0ef770954bca104ee99b3b6b7f9b240605ac03517d9f98cbc1893daa03f3c038"
   name = "github.com/coreos/go-semver"
-  packages = [
-    ".",
-    "semver",
-  ]
+  packages = ["semver"]
   pruneopts = "UT"
   revision = "8ab6407b697782a06568d4b7f1db25550ec2e4c6"
   version = "v0.2.0"
@@ -255,7 +252,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/coreos/go-semver",
+    "github.com/coreos/go-semver/semver",
     "github.com/joho/godotenv",
     "github.com/sirupsen/logrus",
     "github.com/urfave/cli",

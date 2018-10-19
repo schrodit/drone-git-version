@@ -13,7 +13,7 @@ import (
 )
 
 type Git interface {
-	Commit(versionFile string)
+	Commit(versionFile, version string)
 	Push(branch string)
 }
 
@@ -48,7 +48,7 @@ func (g *git) Push(branch string) {
 	}
 }
 
-func (g *git) Commit(versionFile string) {
+func (g *git) Commit(versionFile, version string) {
 	logrus.Infof("git add %v", versionFile)
 	_, err := g.worktree.Add(versionFile)
 	if err != nil {
@@ -56,7 +56,7 @@ func (g *git) Commit(versionFile string) {
 	}
 
 	logrus.Infof("git commit -m \"[CI SKIP] ci upgrade to version $VERSION\" ")
-	commit, err := g.worktree.Commit("[CI SKIP] ci upgrade to version $VERSION", &GIT.CommitOptions{
+	commit, err := g.worktree.Commit(fmt.Sprintf("[CI SKIP] ci upgrade to version %s", version), &GIT.CommitOptions{
 		Author: &object.Signature{
 			Name:  g.gitName,
 			Email: g.gitEmail,
